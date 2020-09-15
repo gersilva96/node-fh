@@ -16,3 +16,13 @@ process.env.NODE_ENV = process.env.NODE_ENV || "dev";   //Esta variable la estab
 let urlDB;
 (process.env.NODE_ENV === "dev") ? urlDB = "mongodb://localhost:27017/cafe" : urlDB = process.env.URIDB;
 process.env.URLDB = urlDB;
+
+
+// ========================================
+// Expiración del Token
+// ========================================
+// Segundos
+// Minutos
+// Horas
+// Días
+process.env.EXPIRATION_TOKEN = 60 * 60 * 24 * 30;
