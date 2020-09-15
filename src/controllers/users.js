@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 module.exports = {
     getUsers: async (req, res) => {
         try {
-            const limit = parseInt(req.query.limit) || 0;
-            const offset = parseInt(req.query.offset) || 10;
+            const limit = parseInt(req.query.limit) || 10;
+            const offset = parseInt(req.query.offset) || 0;
             const users = await User.find({status: true}, "name email img role").limit(limit).skip(offset);
             const total = await User.countDocuments({status: true});
             res.json({
