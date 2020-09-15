@@ -1,4 +1,5 @@
 require("./config/config");
+require("dotenv").config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -7,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require("body-parser");
 
+const mainRoute = require("./routes/main");
 const usersRoute = require('./routes/users');
 
 const app = express();
@@ -18,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(bodyParser.json());
 
+app.use('/', mainRoute);
 app.use('/users', usersRoute);
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err, res) => {
